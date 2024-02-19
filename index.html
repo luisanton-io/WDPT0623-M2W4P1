@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <button onclick="document.querySelector('dialog').showModal()">
+        Hover
+    </button>
+
+    <dialog>
+        Hello
+
+        <button onclick="this.closest('dialog').close()">
+            Close
+        </button>
+    </dialog>
+
+
+    <div>
+        <button onclick="newSquare()">New square</button>
+        <div id="square-container"></div>
+    </div>
+
+    <!-- <div id="splashscreen" onanimationend="removeSplashscreen()"> -->
+    <div id="splashscreen">
+        <!-- Hello, world! -->
+        <img src="assets/logo.svg" alt="splashscreen">
+    </div>
+
+    <script>
+        function newSquare() {
+            const square = document.createElement('div');
+            square.classList.add('square');
+            square.classList.add('slide-in-top')
+            document.querySelector('#square-container').appendChild(square);
+
+            square.onclick = function () {
+                square.classList.add('slide-out-top');
+                setTimeout(function () {
+                    square.remove();
+                }, 500);
+            }
+        }
+
+        function removeSplashscreen() {
+            document.querySelector('#splashscreen').remove();
+        }
+    </script>
+
+    <!-- <script>
+        window.onload = function () {
+            var btn = document.querySelector('button');
+            btn.addEventListener('mouseover', function () {
+                alert('hello');
+            });
+        }
+    </script> -->
+</body>
+
+</html>
